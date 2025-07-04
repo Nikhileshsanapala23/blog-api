@@ -1,0 +1,84 @@
+API Documentation
+Authentication
+Register a new user
+Endpoint: POST /api/register/
+
+Request Body:
+
+json
+{
+  "username": "newuser",
+  "email": "user@example.com",
+  "password": "securepassword123"
+}
+Login
+Endpoint: POST /api/login/
+
+Request Body:
+
+json
+{
+  "username": "existinguser",
+  "password": "userpassword"
+}
+Logout
+Endpoint: POST /api/logout/
+
+Posts
+Create a new post (authenticated)
+Endpoint: POST /api/create-post/
+
+Request Body:
+
+json
+{
+  "title": "My First Post",
+  "content": "This is the content of my post."
+}
+List all posts
+Endpoint: GET /api/posts/
+
+Response:
+
+json
+[
+  {
+    "id": 1,
+    "title": "First Post",
+    "content": "Post content...",
+    "author": "user1",
+    "created_at": "2023-08-20T12:00:00Z",
+    "comment_count": 3
+  }
+]
+Get post details
+Endpoint: GET /api/post/<id>/
+
+Response:
+
+json
+{
+  "id": 1,
+  "title": "Post Title",
+  "content": "Post content...",
+  "author": "username",
+  "created_at": "2023-08-20T12:00:00Z",
+  "comments": [
+    {
+      "id": 1,
+      "text": "Great post!",
+      "user": "commenter1",
+      "created_at": "2023-08-20T12:30:00Z"
+    }
+  ]
+}
+Comments
+Add comment to post (authenticated)
+Endpoint: POST /api/post/<post_id>/comment/
+
+Request Body:
+
+json
+{
+  "text": "This is my comment"
+}
